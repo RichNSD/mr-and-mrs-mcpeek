@@ -3,13 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Bob & Irene McPeek's online wedding gallery." />
-  <title>Mr. & Mrs. McPeek's Gallery</title>
+  <title>Mr. & Mrs. McPeek</title>
+  <meta name="description" content="Photos from Bob & Irene McPeek's wedding, September 26, 2026. View, save, and print them for free." />
+
+  <!-- Link previews when the site is texted or posted -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mrandmrsmcpeek.com/" />
+  <meta property="og:title" content="Mr. & Mrs. McPeek" />
+  <meta property="og:description" content="Photos from Bob & Irene's wedding. Tap to view and save them." />
+  <meta property="og:image" content="https://mrandmrsmcpeek.com/photos/web/063.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div>
-    Coming Soon...
-  </div>
+  <header class="hero">
+    <p class="eyebrow">The wedding of</p>
+    <h1 class="names">Bob <span class="amp">&amp;</span> Irene</h1>
+    <p class="surname">Mr. &amp; Mrs. McPeek</p>
+    <div class="flourish" aria-hidden="true"><span></span>&#10086;<span></span></div>
+    <p class="date">September 26, 2026</p>
+    <img class="hero-photo" src="photos/web/063.jpg" alt="Bob and Irene on their wedding day" />
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        Here are the photos from Bob &amp; Irene's backyard wedding.
+        Please save as many as you like. They're yours to keep, share, and print.
+      </p>
+    </section>
+
+    <section class="cards">
+      <article class="card how-to">
+        <h2>How to save a photo</h2>
+        <ol>
+          <li><strong>Tap</strong> (or click) any photo to see it big.</li>
+          <li>Press the <strong>Save this photo</strong> button under it.</li>
+          <li class="only-ios">Then tap <strong>Save Image</strong>, and it goes into your Photos.</li>
+          <li class="not-ios">That's it! It's saved to your <strong>Downloads</strong>.</li>
+        </ol>
+      </article>
+
+      <article class="card prints">
+        <h2>Want prints? Please use Mpix.</h2>
+        <p class="pitch">
+          I got my start in wedding photography, and after 15+ years Mpix is the
+          <em>only</em> lab I will ever send anyone to: their prints are made to last 30 years,
+          while I've watched big-box store prints fade in under a year without ever seeing a window.
+          They cost maybe a dollar more, and they're worth every penny.
+        </p>
+        <p class="signoff">&mdash; your photographer</p>
+        <a class="button" href="https://www.mpix.com/" target="_blank" rel="noopener">Order prints at Mpix.com</a>
+        <p class="small">Save the photos you want first, then upload them on Mpix.com.</p>
+      </article>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="section-title">The Photos</h2>
+      <p class="section-sub"><span id="photo-count">106</span> photos &middot; tap any photo to see it big</p>
+      <div id="gallery" class="gallery"></div>
+      <noscript>
+        <p class="small">The gallery needs JavaScript turned on. You can still
+          <a href="https://1drv.ms/f/c/d1f69bbfaaa04b55/IgDJUEuQiiyySLiI06KsQNsaAYzAX-xdkc8qFkvskl-ZP2A?e=G5rdOc">see every photo here</a>.</p>
+      </noscript>
+    </section>
+
+    <section class="cards">
+      <article class="card all-photos">
+        <h2>Want every photo at once?</h2>
+        <p>
+          You can download the whole set of full-size originals in one go. It's a very big
+          download (about 7&nbsp;GB), so it's best done on a computer.
+        </p>
+        <a class="button button-outline" href="https://1drv.ms/f/c/d1f69bbfaaa04b55/IgDJUEuQiiyySLiI06KsQNsaAYzAX-xdkc8qFkvskl-ZP2A?e=G5rdOc" target="_blank" rel="noopener">Get all the originals</a>
+      </article>
+
+      <article class="card video">
+        <h2>The video</h2>
+        <p>A short video from the day is coming soon. Check back here!</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="flourish" aria-hidden="true"><span></span>&#10086;<span></span></div>
+    <p>Bob &amp; Irene &middot; September 26, 2026</p>
+  </footer>
+
+  <dialog id="viewer" class="viewer" aria-label="Photo viewer">
+    <div class="viewer-top">
+      <p class="viewer-count" id="viewer-count" aria-live="polite"></p>
+      <button class="viewer-close" id="viewer-close" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        Close
+      </button>
+    </div>
+    <div class="viewer-stage" id="viewer-stage">
+      <button class="viewer-nav prev" id="viewer-prev" type="button" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+      </button>
+      <img id="viewer-img" alt="" />
+      <button class="viewer-nav next" id="viewer-next" type="button" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+      </button>
+    </div>
+    <div class="viewer-bottom">
+      <a class="button button-save" id="viewer-save" href="#" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-5-5m5 5l5-5M5 20h14" /></svg>
+        <span id="viewer-save-label">Save this photo</span>
+      </a>
+      <p class="viewer-hint only-ios">Then tap <strong>Save Image</strong></p>
+      <a class="viewer-mpix" href="https://www.mpix.com/" target="_blank" rel="noopener">Order prints at Mpix.com</a>
+    </div>
+  </dialog>
+
+  <script src="js/photos.js"></script>
+  <script src="js/gallery.js"></script>
 </body>
+</html>
