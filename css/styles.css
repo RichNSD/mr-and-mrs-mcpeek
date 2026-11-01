@@ -1,7 +1,529 @@
+:root {
+  --ivory: #faf7f1;
+  --paper: #fffdf9;
+  --ink: #2e2925;
+  --muted: #6b6158;
+  --accent: #9a82ab;
+  --accent-deep: #6b5179;
+  --line: #e6ddd0;
+  --serif: "Cormorant Garamond", Garamond, Georgia, serif;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
+  --row-height: 200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  background-color: hsl(200, 60, 18);
-  color: hsl(50, 12, 78);
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+html.viewer-open {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent-deep);
+}
+
+h2 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
   text-align: center;
-  font-family: serif;
-  font-size: 3rem;
+  padding: 4.5rem 1rem 0;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.names {
+  margin: 0.25rem 0 0;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(3.75rem, 13vw, 7.5rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.names .amp {
+  color: var(--accent);
+}
+
+.surname {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.25rem auto;
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+.flourish span {
+  display: block;
+  width: 4.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.date {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--muted);
+}
+
+.hero-photo {
+  display: block;
+  width: min(100%, 1100px);
+  margin: 3rem auto 0;
+  border: 10px solid var(--paper);
+  box-shadow: 0 1px 2px rgb(46 41 37 / 0.08), 0 12px 40px rgb(46 41 37 / 0.12);
+}
+
+/* ---------- Content ---------- */
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.intro {
+  max-width: 38rem;
+  margin: 3.5rem auto 0;
+  text-align: center;
+  font-size: 1.45rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 3rem auto;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 2rem 1.75rem;
+  text-align: center;
+}
+
+.card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.85rem;
+}
+
+.card p {
+  margin: 0 0 1rem;
+}
+
+.how-to ol {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.how-to li {
+  counter-increment: step;
+  position: relative;
+  min-height: 2.2rem;
+  padding: 0.15rem 0 0 3.2rem;
+  margin-bottom: 0.9rem;
+}
+
+.how-to li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+/* The how-to steps differ on iPhone/iPad, where photos go to the Photos app */
+.only-ios {
+  display: none !important;
+}
+
+html.ios .only-ios {
+  display: revert !important;
+}
+
+html.ios .not-ios {
+  display: none !important;
+}
+
+.prints {
+  border: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
+  outline-offset: -8px;
+}
+
+.pitch {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.signoff {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.7rem 1.75rem;
+  margin-bottom: 1rem;
+  background: var(--accent-deep);
+  border: 2px solid var(--accent-deep);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #533d60;
+  border-color: #533d60;
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--accent-deep);
+}
+
+.button-outline:hover {
+  color: #fff;
+}
+
+.button svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Gallery ---------- */
+
+.section-title {
+  margin: 4rem 0 0;
+  text-align: center;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 4.5rem);
+}
+
+.section-sub {
+  margin: 0 0 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Justified rows: each tile grows in proportion to its width/height ratio,
+   so every row lines up at an even height and nothing gets cropped. */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gallery::after {
+  content: "";
+  flex-grow: 1000000;
+}
+
+.tile {
+  position: relative;
+  display: block;
+  flex-grow: calc(var(--ratio) * 100);
+  flex-basis: calc(var(--ratio) * var(--row-height));
+  background: var(--line);
+  overflow: hidden;
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ratio);
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.tile:hover img {
+  transform: scale(1.03);
+}
+
+.tile:focus-visible {
+  outline: 3px solid var(--accent-deep);
+  outline-offset: 3px;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: 1rem 1rem 4rem;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---------- Viewer ---------- */
+
+.viewer {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #14110f;
+  color: #f4efe7;
+  font-family: var(--serif);
+}
+
+.viewer[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer::backdrop {
+  background: #14110f;
+}
+
+.viewer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.viewer-count {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+}
+
+.viewer-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.9rem;
+  padding: 0.4rem 1.1rem;
+  background: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(255 255 255 / 0.3);
+  color: inherit;
+  font: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.viewer-close:hover {
+  background: rgb(255 255 255 / 0.2);
+}
+
+.viewer-close svg,
+.viewer-nav svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.viewer-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4.5rem;
+}
+
+.viewer-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.viewer-nav {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.12);
+  border: 1px solid rgb(255 255 255 / 0.3);
+  color: inherit;
+  cursor: pointer;
+}
+
+.viewer-nav:hover {
+  background: rgb(255 255 255 / 0.25);
+}
+
+.viewer-nav.prev {
+  left: 0.75rem;
+}
+
+.viewer-nav.next {
+  right: 0.75rem;
+}
+
+.viewer-nav svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.viewer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+}
+
+.viewer-bottom .button {
+  margin: 0;
+  min-width: min(100%, 18rem);
+  font-size: 1.35rem;
+  background: #ddd0e6;
+  border-color: #ddd0e6;
+  color: #1f1824;
+}
+
+.viewer-bottom .button:hover {
+  background: #c7b3d5;
+  border-color: #c7b3d5;
+}
+
+.viewer-hint {
+  margin: 0.5rem 0 0;
+  font-size: 1.05rem;
+}
+
+.viewer-mpix {
+  margin-top: 0.6rem;
+  color: #cdbbd9;
+  font-size: 1.05rem;
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 640px) {
+  :root {
+    --row-height: 105px;
+  }
+
+  body {
+    font-size: 1.2rem;
+  }
+
+  .hero {
+    padding-top: 3rem;
+  }
+
+  .hero-photo {
+    border-width: 6px;
+    margin-top: 2rem;
+  }
+
+  .gallery {
+    gap: 4px;
+  }
+
+  .card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* Arrows sit over the photo on small screens; swiping also works */
+  .viewer-stage {
+    padding: 0;
+  }
+
+  .viewer-nav {
+    width: 3rem;
+    height: 3rem;
+    background: rgb(20 17 15 / 0.55);
+  }
+
+  .viewer-nav.prev {
+    left: 0.4rem;
+  }
+
+  .viewer-nav.next {
+    right: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile img {
+    transition: none;
+  }
 }
