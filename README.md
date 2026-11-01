@@ -1,2 +1,2 @@
-# mr-and-mrs-mcpeek
-For hosting a website
+# Mr & Mrs McPeek
+The Git Repo for the online gallery.
