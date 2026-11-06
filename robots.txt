@@ -1,0 +1,8 @@
+# Internet Archive crawlers: allow everything
+User-agent: archive.org_bot
+User-agent: ia_archiver
+Disallow:
+
+# Everyone else: deny everything
+User-agent: *
+Disallow: /
